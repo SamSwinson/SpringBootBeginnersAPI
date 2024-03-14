@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  postgresdb:
+    container_name: postgres
+    image: postgres
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - POSTGRES_USER= swinsons100
+      - POSTGRES_PASSWORD= Ringfence1!
+      - PGDATA=/data/postgres
+    ports:
+      - "5332:5432"
+    volumes:
+      - db:/data/postgres
+    networks:
+      - db
+networks:
+  db:
+    drive: bridge
+volumes:
+  db:
